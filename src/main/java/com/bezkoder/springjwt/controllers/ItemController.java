@@ -91,19 +91,4 @@ public class ItemController {
     }
 
 
-    // Delete a specific item from user by id
-    @DeleteMapping("/users/{userId}/items/{itemName}")
-    public ResponseEntity<HttpStatus> deleteItemFromUser(
-            @PathVariable(value = "userId") Long userId,
-            @PathVariable(value = "itemName") String itemName) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new UserNotFound(userId));
-
-        user.removeItem(itemName);
-        itemRepository.deleteItemByName(itemName);
-        userRepository.save(user);
-
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
 }

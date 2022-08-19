@@ -172,13 +172,4 @@ public class User {
     item.getUsers().add(this);
   }
 
-  public void removeItem(String itemName) {
-    Item item = this.items.stream().filter(t -> t.getName() == itemName).findFirst().orElse(null);
-    if (item != null) {
-      this.items.remove(item);
-      item.getUsers().remove(this);
-    }
-  }
-
-
 }
